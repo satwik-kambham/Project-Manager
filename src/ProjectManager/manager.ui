@@ -6,16 +6,507 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>1100</width>
+    <height>650</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Manager</string>
   </property>
-  <widget class="QWidget" name="centralwidget"/>
-  <widget class="QMenuBar" name="menubar"/>
-  <widget class="QStatusBar" name="statusbar"/>
+  <property name="autoFillBackground">
+   <bool>false</bool>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <widget class="QPushButton" name="quitButton">
+    <property name="geometry">
+     <rect>
+      <x>1049</x>
+      <y>0</y>
+      <width>50</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 75 12pt &quot;Consolas&quot;;
+background-color: rgb(255, 0, 127);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QListWidget" name="projectsList">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>70</y>
+      <width>241</width>
+      <height>581</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(48, 48, 48);
+color: rgb(170, 85, 255);
+font: 14pt &quot;Consolas&quot;;</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="projectListLabel">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>20</y>
+      <width>241</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Consolas</family>
+      <pointsize>18</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(88, 88, 88);
+color: rgb(255, 255, 127);</string>
+    </property>
+    <property name="text">
+     <string>   Project List</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="projectName">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>40</y>
+      <width>431</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 75 25pt &quot;Consolas&quot;;
+color: rgb(170, 255, 127);</string>
+    </property>
+    <property name="text">
+     <string>Project Manager</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Tag1">
+    <property name="geometry">
+     <rect>
+      <x>770</x>
+      <y>47</y>
+      <width>91</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 16pt &quot;Consolas&quot;;</string>
+    </property>
+    <property name="text">
+     <string>Tag 1</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Tag2">
+    <property name="geometry">
+     <rect>
+      <x>882</x>
+      <y>47</y>
+      <width>91</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 16pt &quot;Consolas&quot;;</string>
+    </property>
+    <property name="text">
+     <string>Tag 2</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Tag3">
+    <property name="geometry">
+     <rect>
+      <x>993</x>
+      <y>47</y>
+      <width>91</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 16pt &quot;Consolas&quot;;</string>
+    </property>
+    <property name="text">
+     <string>Tag 3</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="projectDescription">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>150</y>
+      <width>401</width>
+      <height>121</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 14pt &quot;Consolas&quot;;
+color: rgb(170, 170, 255);</string>
+    </property>
+    <property name="text">
+     <string>This is the project description which will contain some basic information about the project.</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="statusButton">
+    <property name="geometry">
+     <rect>
+      <x>577</x>
+      <y>97</y>
+      <width>121</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 18pt &quot;Consolas&quot;;
+background-color: rgba(170, 85, 255, 0);</string>
+    </property>
+    <property name="text">
+     <string>Status</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="openInIDE">
+    <property name="geometry">
+     <rect>
+      <x>710</x>
+      <y>120</y>
+      <width>111</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 14pt &quot;Consolas&quot;;
+background-color: rgba(170, 85, 255, 0);</string>
+    </property>
+    <property name="text">
+     <string>Open in
+IDE</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="runExe">
+    <property name="geometry">
+     <rect>
+      <x>710</x>
+      <y>180</y>
+      <width>111</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 12pt &quot;Consolas&quot;;
+background-color: rgba(170, 85, 255, 0);</string>
+    </property>
+    <property name="text">
+     <string>Run
+executable</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="toDoList">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>270</y>
+      <width>201</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 12pt &quot;Consolas&quot;;
+background-color: rgba(170, 85, 255, 0);</string>
+    </property>
+    <property name="text">
+     <string>To do list</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="changelog">
+    <property name="geometry">
+     <rect>
+      <x>480</x>
+      <y>270</y>
+      <width>171</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 12pt &quot;Consolas&quot;;
+background-color: rgba(170, 85, 255, 0);</string>
+    </property>
+    <property name="text">
+     <string>Changelog</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="screenshot">
+    <property name="geometry">
+     <rect>
+      <x>650</x>
+      <y>270</y>
+      <width>171</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 12pt &quot;Consolas&quot;;
+background-color: rgba(170, 85, 255, 0);</string>
+    </property>
+    <property name="text">
+     <string>Screenshot</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="button">
+    <property name="geometry">
+     <rect>
+      <x>840</x>
+      <y>117</y>
+      <width>231</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 12pt &quot;Consolas&quot;;
+background-color: rgba(170, 85, 255, 0);
+color: rgb(85, 255, 127);</string>
+    </property>
+    <property name="text">
+     <string>Button</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="button_2">
+    <property name="geometry">
+     <rect>
+      <x>840</x>
+      <y>158</y>
+      <width>231</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 12pt &quot;Consolas&quot;;
+background-color: rgba(170, 85, 255, 0);
+color: rgb(85, 255, 127);</string>
+    </property>
+    <property name="text">
+     <string>Button</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="button_3">
+    <property name="geometry">
+     <rect>
+      <x>840</x>
+      <y>190</y>
+      <width>231</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 12pt &quot;Consolas&quot;;
+background-color: rgba(170, 85, 255, 0);
+color: rgb(85, 255, 127);</string>
+    </property>
+    <property name="text">
+     <string>Button</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="button_4">
+    <property name="geometry">
+     <rect>
+      <x>840</x>
+      <y>230</y>
+      <width>231</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 12pt &quot;Consolas&quot;;
+background-color: rgba(170, 85, 255, 0);
+color: rgb(85, 255, 127);</string>
+    </property>
+    <property name="text">
+     <string>Button</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="button_5">
+    <property name="geometry">
+     <rect>
+      <x>840</x>
+      <y>270</y>
+      <width>231</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 12pt &quot;Consolas&quot;;
+background-color: rgba(170, 85, 255, 0);
+color: rgb(85, 255, 127);</string>
+    </property>
+    <property name="text">
+     <string>Button</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="button_6">
+    <property name="geometry">
+     <rect>
+      <x>840</x>
+      <y>310</y>
+      <width>231</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 12pt &quot;Consolas&quot;;
+background-color: rgba(170, 85, 255, 0);
+color: rgb(85, 255, 127);</string>
+    </property>
+    <property name="text">
+     <string>Button</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="button_7">
+    <property name="geometry">
+     <rect>
+      <x>840</x>
+      <y>350</y>
+      <width>231</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 12pt &quot;Consolas&quot;;
+background-color: rgba(170, 85, 255, 0);
+color: rgb(85, 255, 127);</string>
+    </property>
+    <property name="text">
+     <string>Button</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="button_8">
+    <property name="geometry">
+     <rect>
+      <x>840</x>
+      <y>390</y>
+      <width>231</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 12pt &quot;Consolas&quot;;
+background-color: rgba(170, 85, 255, 0);
+color: rgb(85, 255, 127);</string>
+    </property>
+    <property name="text">
+     <string>Button</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="button_9">
+    <property name="geometry">
+     <rect>
+      <x>840</x>
+      <y>440</y>
+      <width>231</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 12pt &quot;Consolas&quot;;
+background-color: rgba(170, 85, 255, 0);
+color: rgb(85, 255, 127);</string>
+    </property>
+    <property name="text">
+     <string>Button</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="button_10">
+    <property name="geometry">
+     <rect>
+      <x>840</x>
+      <y>480</y>
+      <width>231</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 12pt &quot;Consolas&quot;;
+background-color: rgba(170, 85, 255, 0);
+color: rgb(85, 255, 127);</string>
+    </property>
+    <property name="text">
+     <string>Button</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="button_11">
+    <property name="geometry">
+     <rect>
+      <x>840</x>
+      <y>520</y>
+      <width>231</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 12pt &quot;Consolas&quot;;
+background-color: rgba(170, 85, 255, 0);
+color: rgb(85, 255, 127);</string>
+    </property>
+    <property name="text">
+     <string>Button</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="button_12">
+    <property name="geometry">
+     <rect>
+      <x>840</x>
+      <y>570</y>
+      <width>231</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 12pt &quot;Consolas&quot;;
+background-color: rgba(170, 85, 255, 0);
+color: rgb(85, 255, 127);</string>
+    </property>
+    <property name="text">
+     <string>Button</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="button_13">
+    <property name="geometry">
+     <rect>
+      <x>840</x>
+      <y>600</y>
+      <width>231</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 12pt &quot;Consolas&quot;;
+background-color: rgba(170, 85, 255, 0);
+color: rgb(85, 255, 127);</string>
+    </property>
+    <property name="text">
+     <string>Button</string>
+    </property>
+   </widget>
+  </widget>
  </widget>
  <resources/>
  <connections/>
