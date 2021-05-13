@@ -1,0 +1,23 @@
+{
+    "Name": "Project B",
+    "Description": "This is the project description of Project B which will contain some basic information about the project.",
+    "Status": "Done",
+    "Tags": [
+        "Java",
+        "Swing",
+        ""
+    ],
+    "IDE": "code ..\\Project B",
+    "Exe": "..\\Project B.exe",
+    "Github": "https://github.com/code-explorer",
+    "To do list": [
+        "Add idea 3",
+        "Add idea 4",
+        "Add idea 5"
+    ],
+    "Changelog": [
+        "Added idea 1",
+        "Added idea 2"
+    ],
+    "Screenshot": "..\\Project B.png"
+}

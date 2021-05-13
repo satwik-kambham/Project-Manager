@@ -2,7 +2,10 @@
 #define MANAGER_H
 
 #include <QMainWindow>
+#include <QListWidget>
 #include <QDir>
+#include <QJsonDocument>
+#include <QJsonObject>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Manager; }
@@ -18,7 +21,7 @@ public:
 
 private slots:
     void on_quitButton_clicked();
-    void on_statusButton_clicked();
+    void on_projectsList_itemClicked(QListWidgetItem *item);
 
 private:
     Ui::Manager *ui;
