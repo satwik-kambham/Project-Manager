@@ -6,6 +6,9 @@
 #include <QDir>
 #include <QJsonDocument>
 #include <QJsonObject>
+#include <QJsonArray>
+
+enum state{toDo, changelog, screenshot};
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Manager; }
@@ -23,8 +26,16 @@ private slots:
     void on_quitButton_clicked();
     void on_projectsList_itemClicked(QListWidgetItem *item);
 
+    void on_toDoList_clicked();
+
+    void on_changelog_clicked();
+
 private:
     Ui::Manager *ui;
     QDir directory;
+    state currentState = toDo;
+    QListWidgetItem* currentProject;
+
+    QJsonObject retriveJSONinfo();
 };
 #endif // MANAGER_H

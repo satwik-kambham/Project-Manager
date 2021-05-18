@@ -38,18 +38,26 @@ void Manager::on_quitButton_clicked()
     QApplication::quit();
 }
 
-void Manager::on_projectsList_itemClicked(QListWidgetItem *item)
-{
+QJsonObject Manager::retriveJSONinfo(){
     //retreiving information from JSON file
     QString allJSONinfo;
     QString basePath = "C:\\Users\\satwi\\Desktop\\Projects\\Project Manager\\Projects\\.info\\";
     QFile file;
-    file.setFileName(basePath+item->text()+".json");
+    file.setFileName(basePath+currentProject->text()+".json");
     file.open(QIODevice::ReadOnly | QIODevice::Text);
     allJSONinfo = file.readAll();
     file.close();
     QJsonDocument document = QJsonDocument::fromJson(allJSONinfo.toUtf8());
     QJsonObject obj = document.object();
+    return obj;
+}
+
+void Manager::on_projectsList_itemClicked(QListWidgetItem *item)
+{
+    //setting current project
+    currentProject = item;
+
+    QJsonObject obj = retriveJSONinfo();
 
     ui->projectName->setText(obj.value(QString("Name")).toString()); //setting project name
     ui->projectDescription->setText(obj.value(QString("Description")).toString()); //setting project description
@@ -58,6 +66,46 @@ void Manager::on_projectsList_itemClicked(QListWidgetItem *item)
     ui->Tag2->setText(obj.value(QString("Tags"))[1].toString()); //setting tag 2
     ui->Tag3->setText(obj.value(QString("Tags"))[2].toString()); //setting tag 3
 
+    QListWidget* toDolist = ui->List;
+    toDolist->clear();
+    QJsonArray toDoItems = obj.value(QString("To do list")).toArray();
+    foreach(QJsonValue toDoItem, toDoItems){
+        new QListWidgetItem(toDoItem.toString(), toDolist);
+    }
+}
 
+
+
+void Manager::on_toDoList_clicked()
+{
+    currentState = toDo;
+
+    //change ui->List to whatever is present in the JSON file
+    QJsonObject obj = retriveJSONinfo();
+
+    //adding toDoList items in the list
+    QListWidget* toDolist = ui->List;
+    toDolist->clear();
+    QJsonArray toDoItems = obj.value(QString("To do list")).toArray();
+    foreach(QJsonValue toDoItem, toDoItems){
+        new QListWidgetItem(toDoItem.toString(), toDolist);
+    }
+}
+
+
+void Manager::on_changelog_clicked()
+{
+    currentState = changelog;
+
+    //change ui->List to whatever is present in the JSON file
+    QJsonObject obj = retriveJSONinfo();
+
+    //adding toDoList items in the list
+    QListWidget* changelogList = ui->List;
+    changelogList->clear();
+    QJsonArray changelogItems = obj.value(QString("Changelog")).toArray();
+    foreach(QJsonValue toDoItem, changelogItems){
+        new QListWidgetItem(toDoItem.toString(), changelogList);
+    }
 }
 

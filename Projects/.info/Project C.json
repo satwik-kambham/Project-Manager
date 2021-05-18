@@ -11,13 +11,13 @@
     "Exe": "..\\Project C.exe",
     "Github": "https://github.com/code-explorer",
     "To do list": [
-        "Add idea 3",
-        "Add idea 4",
-        "Add idea 5"
+        "Add idea 3 in project C",
+        "Add idea 4 in project C",
+        "Add idea 5 in project C"
     ],
     "Changelog": [
-        "Added idea 1",
-        "Added idea 2"
+        "Added idea 1 in project C",
+        "Added idea 2 in project C"
     ],
     "Screenshot": "..\\Project C.png"
 }
