@@ -9,13 +9,19 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    addtask.cpp \
+    confirmation.cpp \
     main.cpp \
     manager.cpp
 
 HEADERS += \
+    addtask.h \
+    confirmation.h \
     manager.h
 
 FORMS += \
+    addtask.ui \
+    confirmation.ui \
     manager.ui
 
 # Default rules for deployment.

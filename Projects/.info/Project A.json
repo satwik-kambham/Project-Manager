@@ -1,23 +1,23 @@
 {
-    "Name": "Project A",
+    "Changelog": [
+        "Added idea 1 in project A",
+        "Added idea 2 in project A"
+    ],
     "Description": "This is the project description of Project A which will contain some basic information about the project.",
+    "Exe": ".\\Project A.exe",
+    "Github": "https://github.com/code-explorer",
+    "IDE": "code .\\Project A",
+    "Name": "Project A",
+    "Screenshot": "..\\Project A.png",
     "Status": "On Going",
     "Tags": [
         "C++",
         "Qt",
         ""
     ],
-    "IDE": "code ..\\Project A",
-    "Exe": "..\\Project A.exe",
-    "Github": "https://github.com/code-explorer",
     "To do list": [
         "Add idea 3 in project A",
         "Add idea 4 in project A",
         "Add idea 5 in project A"
-    ],
-    "Changelog": [
-        "Added idea 1 in project A",
-        "Added idea 2 in project A"
-    ],
-    "Screenshot": "..\\Project A.png"
+    ]
 }

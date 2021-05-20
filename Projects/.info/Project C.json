@@ -1,23 +1,23 @@
 {
-    "Name": "Project C",
+    "Changelog": [
+        "Added idea 1 in project C",
+        "Added idea 2 in project C"
+    ],
     "Description": "This is the project description of Project C which will contain some basic information about the project.",
+    "Exe": ".\\Project C.exe",
+    "Github": "https://github.com/code-explorer",
+    "IDE": "code ..",
+    "Name": "Project C",
+    "Screenshot": "..\\Project C.png",
     "Status": "To do",
     "Tags": [
         "Python",
         "Numpy",
         "OpenCV"
     ],
-    "IDE": "code ..\\Project C",
-    "Exe": "..\\Project C.exe",
-    "Github": "https://github.com/code-explorer",
     "To do list": [
         "Add idea 3 in project C",
         "Add idea 4 in project C",
         "Add idea 5 in project C"
-    ],
-    "Changelog": [
-        "Added idea 1 in project C",
-        "Added idea 2 in project C"
-    ],
-    "Screenshot": "..\\Project C.png"
+    ]
 }

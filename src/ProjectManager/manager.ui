@@ -308,7 +308,7 @@ color: rgb(85, 255, 127);</string>
      <string>Button</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="button_3">
+   <widget class="QPushButton" name="openInGithub">
     <property name="geometry">
      <rect>
       <x>840</x>
@@ -318,12 +318,12 @@ color: rgb(85, 255, 127);</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">font: 12pt &quot;Consolas&quot;;
+     <string notr="true">font: 11pt &quot;Consolas&quot;;
 background-color: rgba(170, 85, 255, 0);
 color: rgb(85, 255, 127);</string>
     </property>
     <property name="text">
-     <string>Button</string>
+     <string>Open Github Repository</string>
     </property>
    </widget>
    <widget class="QPushButton" name="button_4">

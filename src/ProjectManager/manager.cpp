@@ -1,5 +1,8 @@
 #include "manager.h"
 #include "ui_manager.h"
+#include "addtask.h"
+#include "confirmation.h"
+#include <cstdlib>
 
 Manager::Manager(QWidget *parent)
     : QMainWindow(parent)
@@ -52,6 +55,16 @@ QJsonObject Manager::retriveJSONinfo(){
     return obj;
 }
 
+void Manager::addJSONinfo(QJsonObject jsonObject){
+    QString basePath = "C:\\Users\\satwi\\Desktop\\Projects\\Project Manager\\Projects\\.info\\";
+    QFile file;
+    file.setFileName(basePath+currentProject->text()+".json");
+    file.open(QIODevice::WriteOnly);
+    QJsonDocument jsonDoc(jsonObject);
+    file.write(jsonDoc.toJson());
+    file.close();
+}
+
 void Manager::on_projectsList_itemClicked(QListWidgetItem *item)
 {
     //setting current project
@@ -79,6 +92,7 @@ void Manager::on_projectsList_itemClicked(QListWidgetItem *item)
 void Manager::on_toDoList_clicked()
 {
     currentState = toDo;
+    ui->markDoneOrNotDone->setText("Mark as done");
 
     //change ui->List to whatever is present in the JSON file
     QJsonObject obj = retriveJSONinfo();
@@ -96,6 +110,7 @@ void Manager::on_toDoList_clicked()
 void Manager::on_changelog_clicked()
 {
     currentState = changelog;
+    ui->markDoneOrNotDone->setText("Mark as not done");
 
     //change ui->List to whatever is present in the JSON file
     QJsonObject obj = retriveJSONinfo();
@@ -107,5 +122,108 @@ void Manager::on_changelog_clicked()
     foreach(QJsonValue toDoItem, changelogItems){
         new QListWidgetItem(toDoItem.toString(), changelogList);
     }
+}
+
+
+void Manager::on_removeTask_clicked()
+{
+    confirmation* confirmation_window = new confirmation;
+    confirmation_window->show();
+    confirmation_window->exec();
+    if (confirmation_window->confirmed){
+        QJsonObject obj = retriveJSONinfo();
+        QListWidgetItem* item = ui->List->takeItem(ui->List->currentRow());
+        delete item;
+        addJSONinfo(obj);
+    }
+    delete confirmation_window;
+}
+
+
+
+void Manager::on_addTask_clicked()
+{
+    addtask* addWindow = new addtask;
+    this->hide();
+    addWindow->show();
+    addWindow->exec();
+    ui->List->addItem(addWindow->taskInfo);
+    QJsonObject obj = retriveJSONinfo();
+    if (currentState == toDo){
+        QJsonArray todolist = obj.value("To do list").toArray();
+        todolist.append(addWindow->taskInfo);
+        obj.insert("To do list", todolist);
+    }else if (currentState == changelog){
+        QJsonArray changeloglist = obj.value("Changelog").toArray();
+        changeloglist.append(addWindow->taskInfo);
+        obj.insert("Changelog", changeloglist);
+    }
+    addJSONinfo(obj);
+    this->show();
+    delete addWindow;
+}
+
+
+void Manager::on_markDoneOrNotDone_clicked()
+{
+    QJsonObject obj = retriveJSONinfo();
+    QListWidgetItem* item = ui->List->currentItem();
+    QJsonArray todolist = obj.value("To do list").toArray();
+    QJsonArray changeloglist = obj.value("Changelog").toArray();
+    if (currentState == toDo){
+        todolist.removeAt(ui->List->currentRow());
+        changeloglist.append(item->text());
+    }else if (currentState == changelog){
+        changeloglist.removeAt(ui->List->currentRow());
+        todolist.append(item->text());
+    }
+    obj.insert("To do list", todolist);
+    obj.insert("Changelog", changeloglist);
+    delete item;
+    addJSONinfo(obj);
+}
+
+
+void Manager::on_statusButton_clicked()
+{
+    QJsonObject obj = retriveJSONinfo();
+    QString status = obj.value("Status").toString();
+
+    if(status == "To do"){
+        status = "On Going";
+    }else if(status == "On Going"){
+        status = "Done";
+    }else if(status == "Done"){
+        status = "To do";
+    }else{
+        status = "To do";
+    }
+
+    obj.insert("Status", status);
+    ui->statusButton->setText(status);
+    addJSONinfo(obj);
+}
+
+
+void Manager::on_openInIDE_clicked()
+{
+    QJsonObject obj = retriveJSONinfo();
+    system(obj.value("IDE").toString().toStdString().c_str());
+}
+
+
+void Manager::on_runExe_clicked()
+{
+    QJsonObject obj = retriveJSONinfo();
+    system(obj.value("Exe").toString().toStdString().c_str());
+}
+
+
+void Manager::on_openInGithub_clicked()
+{
+    QJsonObject obj = retriveJSONinfo();
+    std::string a = "start chrome ";
+    a += obj.value("Github").toString().toStdString();
+    system(a.c_str());
 }
 
