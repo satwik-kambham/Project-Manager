@@ -3,10 +3,11 @@
 #include <QFileDialog>
 #include <cstdlib>
 
-editor::editor(QListWidgetItem* _currentProject, QWidget *parent) :
+editor::editor(QString _projectDirectoryPath, QListWidgetItem* _currentProject, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::editor),
-    currentProject(_currentProject)
+    currentProject(_currentProject),
+    projectDirectoryPath(_projectDirectoryPath)
 {
     ui->setupUi(this);
     setFixedSize(size()); // making program non resizable
@@ -42,9 +43,9 @@ void editor::on_chooseExe_clicked()
 void editor::on_buttonBox_accepted()
 {
     if (currentProject == nullptr){
-        QString str = "mkdir \"C:\\Users\\satwi\\Desktop\\Projects\\Project Manager\\Projects\\" + ui->projectName->toPlainText() + "\"";
+        QString str = "mkdir \"" + projectDirectoryPath + "\\" + ui->projectName->toPlainText() + "\"";
         system(str.toStdString().c_str());
-        str = "echo {} > \"C:\\Users\\satwi\\Desktop\\Projects\\Project Manager\\Projects\\.info\\" + ui->projectName->toPlainText() + ".json \"";
+        str = "echo {} > \"" + projectDirectoryPath + "\\.info\\" + ui->projectName->toPlainText() + ".json \"";
         system(str.toStdString().c_str());
         currentProject = new QListWidgetItem(ui->projectName->toPlainText());
         addJSONinfo(createJSONobject());
@@ -68,7 +69,7 @@ QJsonObject editor::createJSONobject(){
 QJsonObject editor::retriveJSONinfo(){
     //retreiving information from JSON file
     QString allJSONinfo;
-    QString basePath = "C:\\Users\\satwi\\Desktop\\Projects\\Project Manager\\Projects\\.info\\";
+    QString basePath = projectDirectoryPath + "\\.info\\";
     QFile file;
     file.setFileName(basePath+currentProject->text()+".json");
     file.open(QIODevice::ReadOnly | QIODevice::Text);
@@ -80,7 +81,7 @@ QJsonObject editor::retriveJSONinfo(){
 }
 
 void editor::addJSONinfo(QJsonObject jsonObject){
-    QString basePath = "C:\\Users\\satwi\\Desktop\\Projects\\Project Manager\\Projects\\.info\\";
+    QString basePath = projectDirectoryPath + "\\.info\\";
     QFile file;
     file.setFileName(basePath+currentProject->text()+".json");
     file.open(QIODevice::WriteOnly);

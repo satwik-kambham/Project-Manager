@@ -6,10 +6,10 @@
     "Description": "This is the project description of Project A which will contain some basic information about the project.",
     "Exe": ".\\Project A.exe",
     "Github": "https://github.com/code-explorer",
-    "IDE": "code .\\Project A",
+    "IDE": "code",
     "Name": "Project A",
     "Screenshot": "..\\Project A.png",
-    "Status": "On Going",
+    "Status": "To do",
     "Tags": [
         "C++",
         "Qt",

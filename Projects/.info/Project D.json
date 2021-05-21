@@ -1,0 +1,21 @@
+{
+    "Changelog": [
+        "Add idea 1 to project D",
+        "Add idea 2 to project D"
+    ],
+    "Description": "This is the description for project D",
+    "Exe": "",
+    "Github": "https://github.com/code-explorer",
+    "IDE": "code",
+    "Name": "Project D",
+    "Status": "To do",
+    "Tags": [
+        "Tag 1",
+        "Tag 2",
+        "Tag 3"
+    ],
+    "To do list": [
+        "Add idea 3 to project D",
+        "Add idea 4 to project D"
+    ]
+}

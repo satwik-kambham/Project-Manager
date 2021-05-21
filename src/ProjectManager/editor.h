@@ -16,7 +16,7 @@ class editor : public QDialog
     Q_OBJECT
 
 public:
-    explicit editor(QListWidgetItem* _currentProject = nullptr ,QWidget *parent = nullptr);
+    explicit editor(QString _projectDirectoryPath, QListWidgetItem* _currentProject = nullptr, QWidget *parent = nullptr);
     ~editor();
 
 private slots:
@@ -26,6 +26,7 @@ private slots:
 private:
     Ui::editor *ui;
     QListWidgetItem* currentProject;
+    QString projectDirectoryPath;
 
     QJsonObject retriveJSONinfo();
     void addJSONinfo(QJsonObject jsonObject);

@@ -12,7 +12,7 @@ Manager::Manager(QWidget *parent)
     ui->setupUi(this);
 
     // setting the background image
-    QPixmap backgroundImg("C:\\Users\\satwi\\Desktop\\Projects\\Project Manager\\UIBackground.png");
+    QPixmap backgroundImg(backgroundUIPath);
     QPalette palette;
     palette.setBrush(QPalette::Window, backgroundImg);
     this->setPalette(palette);
@@ -22,7 +22,7 @@ Manager::Manager(QWidget *parent)
 
     // adding files in the project list
     QListWidget *projectsList = ui->projectsList;
-    directory = QDir("C:\\Users\\satwi\\Desktop\\Projects\\Project Manager\\Projects");
+    directory = QDir(projectsDirectoryPath);
     QStringList folders = directory.entryList();
     folders.pop_front();
     folders.pop_front();
@@ -45,7 +45,7 @@ void Manager::on_quitButton_clicked()
 QJsonObject Manager::retriveJSONinfo(){
     //retreiving information from JSON file
     QString allJSONinfo;
-    QString basePath = "C:\\Users\\satwi\\Desktop\\Projects\\Project Manager\\Projects\\.info\\";
+    QString basePath = projectsDirectoryPath + "\\.info\\";
     QFile file;
     file.setFileName(basePath+currentProject->text()+".json");
     file.open(QIODevice::ReadOnly | QIODevice::Text);
@@ -57,7 +57,7 @@ QJsonObject Manager::retriveJSONinfo(){
 }
 
 void Manager::addJSONinfo(QJsonObject jsonObject){
-    QString basePath = "C:\\Users\\satwi\\Desktop\\Projects\\Project Manager\\Projects\\.info\\";
+    QString basePath = projectsDirectoryPath + "\\.info\\";
     QFile file;
     file.setFileName(basePath+currentProject->text()+".json");
     file.open(QIODevice::WriteOnly);
@@ -133,6 +133,15 @@ void Manager::on_removeTask_clicked()
     confirmation_window->exec();
     if (confirmation_window->confirmed){
         QJsonObject obj = retriveJSONinfo();
+        if (currentState == toDo){
+            QJsonArray todolist = obj.value("To do list").toArray();
+            todolist.removeAt(ui->List->currentRow());
+            obj.insert("To do list", todolist);
+        }else if (currentState == changelog){
+            QJsonArray changeloglist = obj.value("Changelog").toArray();
+            changeloglist.removeAt(ui->List->currentRow());
+            obj.insert("Changelog", changeloglist);
+        }
         QListWidgetItem* item = ui->List->takeItem(ui->List->currentRow());
         delete item;
         addJSONinfo(obj);
@@ -232,14 +241,14 @@ void Manager::on_openInGithub_clicked()
 
 void Manager::on_createNew_clicked()
 {
-    editor* editor_window = new editor;
+    editor* editor_window = new editor(projectsDirectoryPath);
     this->hide();
     editor_window->show();
     editor_window->exec();
     // adding files in the project list
     QListWidget *projectsList = ui->projectsList;
     projectsList->clear();
-    directory = QDir("C:\\Users\\satwi\\Desktop\\Projects\\Project Manager\\Projects");
+    directory = QDir(projectsDirectoryPath);
     QStringList folders = directory.entryList();
     folders.pop_front();
     folders.pop_front();
@@ -253,7 +262,7 @@ void Manager::on_createNew_clicked()
 
 void Manager::on_editCurrent_clicked()
 {
-    editor* editor_window = new editor(currentProject);
+    editor* editor_window = new editor(projectsDirectoryPath, currentProject);
     this->hide();
     editor_window->show();
     editor_window->exec();

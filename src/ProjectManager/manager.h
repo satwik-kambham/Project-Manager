@@ -39,6 +39,8 @@ private slots:
 
 private:
     Ui::Manager *ui;
+    QString projectsDirectoryPath = "C:\\Users\\satwi\\Desktop\\Projects\\Project Manager\\Projects";
+    QString backgroundUIPath = "C:\\Users\\satwi\\Desktop\\Projects\\Project Manager\\UIBackground.png";
     QDir directory;
     state currentState = toDo;
     QListWidgetItem* currentProject;
