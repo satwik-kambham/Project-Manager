@@ -11,17 +11,20 @@ CONFIG += c++11
 SOURCES += \
     addtask.cpp \
     confirmation.cpp \
+    editor.cpp \
     main.cpp \
     manager.cpp
 
 HEADERS += \
     addtask.h \
     confirmation.h \
+    editor.h \
     manager.h
 
 FORMS += \
     addtask.ui \
     confirmation.ui \
+    editor.ui \
     manager.ui
 
 # Default rules for deployment.

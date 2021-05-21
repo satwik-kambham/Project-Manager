@@ -7,7 +7,6 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QJsonArray>
-#include <QProcess>
 
 enum state{toDo, changelog, screenshot};
 
@@ -35,6 +34,8 @@ private slots:
     void on_openInIDE_clicked();
     void on_runExe_clicked();
     void on_openInGithub_clicked();
+    void on_createNew_clicked();
+    void on_editCurrent_clicked();
 
 private:
     Ui::Manager *ui;

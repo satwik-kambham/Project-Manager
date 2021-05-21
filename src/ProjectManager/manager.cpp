@@ -2,6 +2,7 @@
 #include "ui_manager.h"
 #include "addtask.h"
 #include "confirmation.h"
+#include "editor.h"
 #include <cstdlib>
 
 Manager::Manager(QWidget *parent)
@@ -225,5 +226,39 @@ void Manager::on_openInGithub_clicked()
     std::string a = "start chrome ";
     a += obj.value("Github").toString().toStdString();
     system(a.c_str());
+}
+
+
+
+void Manager::on_createNew_clicked()
+{
+    editor* editor_window = new editor;
+    this->hide();
+    editor_window->show();
+    editor_window->exec();
+    // adding files in the project list
+    QListWidget *projectsList = ui->projectsList;
+    projectsList->clear();
+    directory = QDir("C:\\Users\\satwi\\Desktop\\Projects\\Project Manager\\Projects");
+    QStringList folders = directory.entryList();
+    folders.pop_front();
+    folders.pop_front();
+    foreach(QString folderName, folders){
+        new QListWidgetItem(folderName, projectsList);
+    }
+    delete editor_window;
+    this->show();
+}
+
+
+void Manager::on_editCurrent_clicked()
+{
+    editor* editor_window = new editor(currentProject);
+    this->hide();
+    editor_window->show();
+    editor_window->exec();
+
+    delete editor_window;
+    this->show();
 }
 

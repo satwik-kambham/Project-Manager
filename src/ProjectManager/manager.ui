@@ -272,7 +272,7 @@ background-color: rgba(170, 85, 255, 0);</string>
      <string>Screenshot</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="button">
+   <widget class="QPushButton" name="createNew">
     <property name="geometry">
      <rect>
       <x>840</x>
@@ -287,10 +287,10 @@ background-color: rgba(170, 85, 255, 0);
 color: rgb(85, 255, 127);</string>
     </property>
     <property name="text">
-     <string>Button</string>
+     <string>Create new project</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="button_2">
+   <widget class="QPushButton" name="editCurrent">
     <property name="geometry">
      <rect>
       <x>840</x>
@@ -305,7 +305,7 @@ background-color: rgba(170, 85, 255, 0);
 color: rgb(85, 255, 127);</string>
     </property>
     <property name="text">
-     <string>Button</string>
+     <string>Edit project</string>
     </property>
    </widget>
    <widget class="QPushButton" name="openInGithub">
