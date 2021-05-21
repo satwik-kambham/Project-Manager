@@ -1,2 +1,2 @@
 # Project-Manager
- Qt application to keep track of projects
+ Qt based application to keep track of projects
