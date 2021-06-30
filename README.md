@@ -1,5 +1,7 @@
 # Project-Manager
  Qt based application to keep track of projects
+ 
+ ![App gif](https://1.bp.blogspot.com/-dOa9QRSPSuA/YKeqzI3s_KI/AAAAAAAAABU/aqUUa9l4L-4s_h4OYKsacszkwx4XQ-qEACLcBGAsYHQ/w566-h334/4.gif)
 
 ### Build Instructions
 
